@@ -9,9 +9,9 @@ export class SalesRepoService {
     }
 
     findAll() {
-        this.http.get('https://localhost:8443/sales')
-            .take(100)
-            .subscribe(console.log);
+        // this.http.get('https://localhost:8443/sales')
+        //     .take(100)
+        //     .subscribe(console.log);
     }
 
     findBetween(d1: Date, d2: Date) {

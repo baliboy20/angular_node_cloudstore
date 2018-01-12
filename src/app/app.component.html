@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar>
-  <a mat-button color="primary">RED</a>
-  <a mat-button color="accent">WHITE</a>
-  <a mat-button color="warning">PURPLE</a>
+  <a mat-button [routerLink]="['listing']" color="primary">LIST</a>
+  <a mat-button [routerLink]="['sales-entry']" color="accent">ADD</a>
+  <a mat-button color="warning">STANDING</a>
 </mat-toolbar>
 
-<app-sales-listing></app-sales-listing>
+<router-outlet></router-outlet>

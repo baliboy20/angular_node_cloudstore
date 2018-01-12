@@ -8,6 +8,10 @@ import {SalesListingModule} from './sales-listing/sales-listing.module';
 import {SalesRepoService} from './data/sales-repo.service';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
+import {SalesEntryModule} from './sales-entry/sales-entry.module';
 
 
 @NgModule({
@@ -19,7 +23,10 @@ import {RouterModule} from '@angular/router';
         MaterialsModule,
         SalesListingModule,
         HttpClientModule,
-        RouterModule.forRoot([]),
+       SalesEntryModule,
+        AngularFireModule.initializeApp(environment.firebase, 'twosteptext'),
+        AngularFirestoreModule,
+        RouterModule.forRoot([{path: '', redirectTo: 'listing', pathMatch: 'full'}]),
     ],
     providers: [SalesRepoService],
     bootstrap: [AppComponent]

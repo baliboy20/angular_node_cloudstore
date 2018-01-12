@@ -1,0 +1,16 @@
+<h2></h2>
+
+<form #entryForm="ngForm">
+  <mat-card>
+    <mat-card-title>ENTER ITEM</mat-card-title>
+    <mat-card-content>
+
+      <input type="text" matInput [(ngModle)]="sale.description">
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)= "doCancel()" color="accent">CANCEL</button>
+      <button mat-raised-button (click)="doSave()" color="primary">SAVE</button>
+    </mat-card-actions>
+  </mat-card>
+
+</form>
