@@ -4,7 +4,12 @@ export interface Transaction {
    price?: number;
 }
 
-
+export interface Product {
+    description: string;
+    price: number;
+    group: string;
+    category: string;
+}
 
 export class TransactionFactory {
     static clone(old: Transaction): Transaction {
@@ -14,7 +19,7 @@ export class TransactionFactory {
         newTrans.price = old.price;
         return newTrans as Transaction;
     }
-    static instOf(description: string, quantity: number, price: number) {
+    static instOf(description?: string, quantity?: number, price?: number) {
         const newTrans: Transaction = {};
         newTrans.description = description;
         newTrans.quantity = quantity;

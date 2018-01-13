@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from '@angular/material';
-import {Transaction} from '../data/model/transaction';
+import {Transaction, TransactionFactory} from '../data/model/transaction';
 
 @Component({
     selector: 'app-sales-entry',
@@ -11,6 +11,7 @@ export class SalesEntryComponent implements OnInit {
 
     sale: Transaction ;
     constructor(private snackbar: MatSnackBar) {
+        this.sale = TransactionFactory.instOf();
     }
 
     ngOnInit() {
