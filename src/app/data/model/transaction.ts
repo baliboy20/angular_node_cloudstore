@@ -4,12 +4,8 @@ export interface Transaction {
    price?: number;
 }
 
-export interface Product {
-    description: string;
-    price: number;
-    group: string;
-    category: string;
-}
+
+
 
 export class TransactionFactory {
     static clone(old: Transaction): Transaction {

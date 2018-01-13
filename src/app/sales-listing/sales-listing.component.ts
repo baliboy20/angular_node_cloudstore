@@ -12,6 +12,7 @@ export class SalesListingComponent implements OnInit {
 
   ngOnInit() {
     this.repo.findAll();
+    console.log('Jello on a plate');
   }
 
 }

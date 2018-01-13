@@ -10,7 +10,7 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
       FormsModule,
       MaterialsModule,
-      RouterModule.forChild([{path: 'sales-entry', component: SalesEntryComponent}])
+      RouterModule.forChild([{path: '', component: SalesEntryComponent}])
   ],
   declarations: [SalesEntryComponent],
   exports: [SalesEntryComponent],

@@ -1,0 +1,45 @@
+<h2></h2>
+
+<form #entryForm="ngForm">
+  <mat-card>
+    <mat-card-title>ENTER ITEM</mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input type="text"
+               matInput
+               [(ngModel)]="product.description"
+               required
+               name="#description">
+        <mat-hint>Description</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input type="text"
+               matInput
+               [(ngModel)]="product.price"
+               required
+               name="#price">
+        <mat-hint>price</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input type="number"
+               matInput
+               [(ngModel)]="product.group"
+               required
+               name="#qty">
+        <mat-hint>quantity</mat-hint>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="doCancel()" color="accent">CANCEL</button>
+      <ng-container *ngIf="entryForm.valid">
+        <button mat-raised-button (click)="doSave()" color="primary">SAVE</button>
+      </ng-container>
+
+    </mat-card-actions>
+  </mat-card>
+
+  {{entryForm.valid}}
+</form>

@@ -26,7 +26,12 @@ import {SalesEntryModule} from './sales-entry/sales-entry.module';
        SalesEntryModule,
         AngularFireModule.initializeApp(environment.firebase, 'twosteptext'),
         AngularFirestoreModule,
-        RouterModule.forRoot([{path: '', redirectTo: 'listing', pathMatch: 'full'}]),
+        RouterModule.forRoot([
+            { path: '', redirectTo: 'sales-entry', pathMatch: 'full'},
+            { path: 'listing', loadChildren: './sales-listing/sales-listing.module#SalesListingComponent'},
+            { path: 'sales-entry', loadChildren: './sales-entry/sales-entry.module#SalesEntryComponent'},
+
+            ]),
     ],
     providers: [SalesRepoService],
     bootstrap: [AppComponent]
