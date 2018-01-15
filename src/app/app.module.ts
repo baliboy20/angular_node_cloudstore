@@ -30,7 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         AngularFirestoreModule,
         RouterModule.forRoot([
             // { path: '', redirectTo: 'sales-entry', pathMatch: 'full'},
-            {path: 'listing', loadChildren: './sales-listing/sales-listing.module#SalesListingComponent'},
+           // {path: 'listing', loadChildren: './sales-listing/sales-listing.module#SalesListingComponent'},
             // { path: 'sales-entry', children: './sale-entry/sales-entry.module#SalesEntryComponent'},
             {path: 'sales-entry', loadChildren: './sales-entry/sales-entry.module#SalesEntryModule'},
             {path: 'product-entry', loadChildren: './product-entry/product-entry.module#ProductEntryModule'},

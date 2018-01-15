@@ -2,22 +2,33 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatAutocompleteModule,
-    MatButton,
-    MatButtonModule, MatButtonToggleModule, MatCard,
-    MatCardModule, MatCheckboxModule, MatChip, MatChipInput,
-    MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatExpansionPanel, MatGridListModule,
-    MatIcon, MatIconModule,
-    MatInput,
+    MatButtonModule, MatButtonToggleModule,
+    MatCardModule, MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
     MatInputModule,
-    MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
     MatSelectModule,
     MatSidenavModule,
     MatSliderModule,
-    MatSlideToggleModule, MatSnackBar,
-    MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule,
-    MatTooltip,
+    MatSlideToggleModule,
+    MatSnackBar,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
     MatTooltipModule,
-
 } from '@angular/material';
 
 
@@ -50,7 +61,7 @@ import {
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    // MatPaginatorModule,
+    MatPaginatorModule,
     MatSelectModule,
 
 

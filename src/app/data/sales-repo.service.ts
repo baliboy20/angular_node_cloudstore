@@ -27,7 +27,7 @@ export class SalesRepoService {
     }
 
     listProducts() {
-        this.db.collection('PRODUCTS').stateChanges().subscribe(console.log);
+        // this.db.collection('PRODUCTS').stateChanges().subscribe(console.log);
         return this.db.collection('PRODUCTS').valueChanges();
     }
 
