@@ -1,8 +1,7 @@
 <mat-card>
-  <mat-form-field>
-    <input type="text" matInput >
-    <!--<mat-hint>You can't eat it</mat-hint>-->
-  </mat-form-field>
+  <div *ngFor="let prod of products$ | async">
+    {{prod|json}}
+  </div>
 </mat-card>
 
 

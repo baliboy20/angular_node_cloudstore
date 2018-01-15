@@ -1,45 +1,70 @@
-<h2></h2>
+<form #entryForm="ngForm" novalidate>
+    <br>
+    <mat-card>
+        <mat-card-title>Products</mat-card-title>
+        <mat-card-content>
+            <mat-form-field>
+                <input type="text"
+                       matInput
+                       [(ngModel)]="product.description"
+                       placeholder="Descripton of product"
+                       required
+                       name="#description">
+                <mat-hint>Product description</mat-hint>
+            </mat-form-field>
 
-<form #entryForm="ngForm">
-  <mat-card>
-    <mat-card-title>ENTER ITEM</mat-card-title>
-    <mat-card-content>
-      <mat-form-field>
-        <input type="text"
-               matInput
-               [(ngModel)]="product.description"
-               required
-               name="#description">
-        <mat-hint>Description</mat-hint>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input type="text"
-               matInput
-               [(ngModel)]="product.price"
-               required
-               name="#price">
-        <mat-hint>price</mat-hint>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input type="number"
-               matInput
-               [(ngModel)]="product.group"
-               required
-               name="#qty">
-        <mat-hint>quantity</mat-hint>
-      </mat-form-field>
+            <mat-form-field>
+                <input type="text"
+                       matInput
+                       [(ngModel)]="product.price"
+                       placeholder="price (£0.00)"
+                       required
+                       name="#price">
+                <mat-hint>price</mat-hint>
+            </mat-form-field>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="doCancel()" color="accent">CANCEL</button>
-      <ng-container *ngIf="entryForm.valid">
-        <button mat-raised-button (click)="doSave()" color="primary">SAVE</button>
-      </ng-container>
+            <mat-form-field>
+                <input type="number"
+                       matInput
+                       [(ngModel)]="product.group"
+                       placeholder="Product group"
+                       required
+                       name="#group">
+                <mat-hint>quantity</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="demo-chip-list">
+                <mat-chip-list #catList>
+                    <mat-chip *ngFor="let cat of product.categories" [selectable]="selectable"
+                              [removable]="removable" (remove)="remove(cat)">
+                        {{cat}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="New Categories..."
+                           [matChipInputFor]="catList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="add($event)"/>
+                </mat-chip-list>
+            </mat-form-field>
 
-    </mat-card-actions>
-  </mat-card>
+            <mat-form-field class="textarea">
+                <textarea
+                        class="textarea"
+                        placeholder="notes"
+                        matInput
+                        [(ngModel)]="product.notes"
+                        name="notes"></textarea>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="doCancel()" color="accent">CANCEL</button>
+            <ng-container *ngIf="entryForm.valid">
+                <button mat-raised-button (click)="doSave()" color="primary">SAVE</button>
+            </ng-container>
 
-  {{entryForm.valid}}
+        </mat-card-actions>
+    </mat-card>
+
+    {{entryForm.valid}}
 </form>

@@ -2,7 +2,7 @@
 <mat-toolbar>
   <a mat-button [routerLink]="['listing']" color="primary">LIST</a>
   <a mat-button [routerLink]="['sales-entry']" color="accent">ADD</a>
-  <a mat-button color="warning">STANDING</a>
+  <a mat-button color="warning" [routerLink]="['product-entry']">PRODUCT</a>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
