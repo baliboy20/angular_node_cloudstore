@@ -34,7 +34,7 @@ export class ProductEntryComponent implements OnInit {
         this.snackbar.open('Posted', null, {duration: 1000});
         this.repo.insertProducts(this.product)
             .then(a => {
-                this.product = ProductFactory.instOf();
+              //  this.product = ProductFactory.instOf();
                 this.snackbar.open( 'INSERT COMPLETED', null, {duration: 1000});
             }).catch(a => {
             this.snackbar.open(a, null, {duration: 1000});

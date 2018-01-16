@@ -6,6 +6,7 @@ import {Product} from './model/product';
 import {AngularFirestore} from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 import DocumentReference = firebase.firestore.DocumentReference;
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class SalesRepoService {
@@ -14,7 +15,7 @@ export class SalesRepoService {
 
     constructor(private db: AngularFirestore) {
         this.db.collection('transactions').valueChanges().subscribe(console.log);
-        console.log('HIND LEGS OFF A DONKEY');
+
     }
 
     findAll() {
@@ -26,8 +27,7 @@ export class SalesRepoService {
     findBetween(d1: Date, d2: Date) {
     }
 
-    listProducts() {
-        // this.db.collection('PRODUCTS').stateChanges().subscribe(console.log);
+    listProducts(): Observable<Product[]> {
         return this.db.collection('PRODUCTS').valueChanges();
     }
 

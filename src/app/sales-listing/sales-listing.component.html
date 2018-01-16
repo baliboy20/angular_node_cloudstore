@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-table #table [dataSource]="productSource">
+  <mat-table #table [dataSource]="dataSource">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -18,6 +18,13 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
+  <mat-paginator #paginator
+                 [length]="15"
+                 [pageIndex]="0"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[1, 2, 5, 10]">
+  </mat-paginator>
 </mat-card>
 
 
