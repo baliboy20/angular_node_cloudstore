@@ -8,11 +8,11 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/observable/from';
 
 @Component({
-    selector: 'app-sales-listing',
-    templateUrl: './sales-listing.component.html',
-    styleUrls: ['./sales-listing.component.scss']
+    selector: 'app-product-listing',
+    templateUrl: './product-listing.component.html',
+    styleUrls: ['./product-listing.component.scss']
 })
-export class SalesListingComponent implements OnInit, AfterViewInit {
+export class ProductListingComponent implements OnInit, AfterViewInit {
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;

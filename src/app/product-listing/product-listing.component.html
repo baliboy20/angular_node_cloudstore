@@ -17,7 +17,7 @@
     <ng-container matColumnDef="price">
       <mat-header-cell *matHeaderCellDef mat-sort-header > Price </mat-header-cell>
       <mat-cell *matCellDef="let productSource">
-          <a [routerLink]="['listing']">{{productSource.price}} </a>
+        <a [routerLink]="['listing']">{{productSource.price}} </a>
       </mat-cell>
     </ng-container>
 
