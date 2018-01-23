@@ -13,6 +13,7 @@ import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment';
 import {SalesEntryModule} from './sales-entry/sales-entry.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ProductListingModule} from './product-listing/product-listing.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         SalesListingModule,
         HttpClientModule,
         SalesEntryModule,
+        ProductListingModule,
         AngularFireModule.initializeApp(environment.firebase, 'twosteptext'),
         AngularFirestoreModule,
         RouterModule.forRoot([
@@ -34,8 +36,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
             // { path: 'sales-entry', children: './sale-entry/sales-entry.module#SalesEntryComponent'},
             {path: 'sales-entry', loadChildren: './sales-entry/sales-entry.module#SalesEntryModule'},
             {path: 'product-entry', loadChildren: './product-entry/product-entry.module#ProductEntryModule'},
+            {path: 'product-listing', loadChildren: './product-entry/product-entry.module#ProductEntryModule'},
 
-        ]),
+        ], { enableTracing: false}),
     ],
     providers: [SalesRepoService],
     bootstrap: [AppComponent]

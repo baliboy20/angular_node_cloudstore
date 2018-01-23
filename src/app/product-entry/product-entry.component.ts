@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TransactionFactory} from '../data/model/transaction';
 import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {Product, ProductFactory} from '../data/model/product';
@@ -13,36 +13,38 @@ import {SalesRepoService} from '../data/sales-repo.service';
 })
 export class ProductEntryComponent implements OnInit {
     product: Product;
+
+    @Input() set selectedProduct(value: Product) {
+        this.product = ProductFactory.clone(value);
+    }
+
+    @Output() formDoneEvent: EventEmitter<any> = new EventEmitter()
+
     separatorKeysCodes = [ENTER, COMMA];
 
     constructor(private snackbar: MatSnackBar, private  repo: SalesRepoService) {
         this.product = ProductFactory.instOf();
     }
 
-    ngOnInit() {
-
-    }
+    ngOnInit() { }
 
     doCancel() {
-
-        console.log(this.product);
         this.product = ProductFactory.instOf();
-
+        this.formDoneEvent.emit('FORM_DONE_EVENT');
     }
 
     doSave() {
         this.snackbar.open('Posted', null, {duration: 1000});
         this.repo.insertProducts(this.product)
             .then(a => {
-              //  this.product = ProductFactory.instOf();
-                this.snackbar.open( 'INSERT COMPLETED', null, {duration: 1000});
+                this.snackbar.open('INSERT COMPLETED', null, {duration: 1000});
+                this.formDoneEvent.emit('FORM_DONE_EVENT');
             }).catch(a => {
             this.snackbar.open(a, null, {duration: 1000});
         });
     }
 
     add(event: MatChipInputEvent): void {
-        console.log('Add happened');
         const input = event.input;
         const value = event.value;
 

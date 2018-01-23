@@ -1,36 +1,55 @@
-<mat-card>
-  <mat-form-field>
-    <input type="text" matInput placeholder="filter products" (keyup)="applyFilter($event.target.value)">
-  </mat-form-field>
-  <p></p>
-  <mat-table #table [dataSource]="dataSource" matSort>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef mat-sort-header > Description  </mat-header-cell>
-      <mat-cell *matCellDef="let productSource"> {{productSource.description}} </mat-cell>
-    </ng-container>
+<mat-drawer-container>
 
-    <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef mat-sort-header > Price </mat-header-cell>
-      <mat-cell *matCellDef="let productSource">
-        <a [routerLink]="['listing']">{{productSource.price}} </a>
-      </mat-cell>
-    </ng-container>
+  <mat-drawer mode="side" opened="true" mode="side" #sidenav>
+    <button mat-button-raised color="primary" (click)="sidenav.close()">CLOSE</button>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+    <router-outlet name="productDetail"
+                   (deactivate)="onDeactivate($event)"
+                   (activate)="onActivate($event)" ></router-outlet>
+  </mat-drawer>
+  <mat-card>
 
-  <mat-paginator #paginator
-                 [length]="15"
-                 [pageIndex]="0"
-                 [pageSize]="5"
-                 [pageSizeOptions]="[1, 2, 5, 10]">
-  </mat-paginator>
-</mat-card>
+    <mat-card-content>
+
+      <button mat-button-raised color="primary" (click)="sidenav.open()">open</button>
+      <mat-form-field>
+        <input type="text" matInput placeholder="filter products" (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+      <p></p>
+      <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Description</mat-header-cell>
+          <mat-cell *matCellDef="let productSource">
+            <button matButton (click)="navigateToDetail(productSource)">{{productSource.description}}</button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Price</mat-header-cell>
+          <mat-cell *matCellDef="let productSource">
+            <a [routerLink]="['listing']">{{productSource.price}} </a>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginator
+                     [length]="15"
+                     [pageIndex]="0"
+                     [pageSize]="5"
+                     [pageSizeOptions]="[1, 2, 5, 10]">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</mat-drawer-container>
 
 
