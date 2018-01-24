@@ -1,45 +1,51 @@
-<h2></h2>
+<mat-toolbar></mat-toolbar>
+<mat-drawer-container style="height: 100vh; width: 100%">
+    <mat-drawer #sidenav opened="true"
+                style="width: 40%"
+                mode="side">
+        <!--<button mat-button (click)="sidenav.close()" >CLOSE</button>-->
+    <!--<button mat-button (click)="sidenav.open()">OPEN</button>-->
 
-<form #entryForm="ngForm">
-    <mat-card>
-        <mat-card-title>ENTER ITEM</mat-card-title>
-        <mat-card-content>
-            <mat-form-field>
-                <input type="text"
-                       matInput
-                       [(ngModel)]="sale.description"
-                       required
-                       name="#description">
-                <mat-hint>Description</mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input type="text"
-                       matInput
-                       [(ngModel)]="sale.price"
-                       required
-                       name="#price">
-                <mat-hint>price</mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <input type="number"
-                       matInput
-                       [(ngModel)]="sale.quantity"
-                       required
-                       name="#qty">
-                <mat-hint>quantity</mat-hint>
-            </mat-form-field>
+        <ng-container *ngTemplateOutlet="selectedItems"></ng-container>
 
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button (click)="doCancel()" color="accent">CANCEL</button>
-            <ng-container *ngIf="entryForm.valid">
-                <button mat-raised-button (click)="doSave()" color="primary">SAVE</button>
-            </ng-container>
+    </mat-drawer>
 
-        </mat-card-actions>
+    <ng-container *ngTemplateOutlet="selectionMenu"></ng-container>
+</mat-drawer-container>
+
+<!-- TEMPLATES -->
+
+<ng-template #selectedItems>
+    <mat-card [@fadeIn]>
+        <table>
+            <thead>
+            <td >Description</td>
+            <td>Price</td>
+            <td>Qty</td>
+            </thead>
+            <tbody>
+            <tr *ngFor="let order of orders" [@fadeIn]>
+                <td style="">{{order.description}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.quantity}}</td>
+                <td><button mat-icon-button (click)="removeTransaction(order)">
+                    <mat-icon style="font-size: 18px; color: gainsboro">close</mat-icon>
+                </button></td>
+            </tr>
+            </tbody>
+        </table>
+        <mat-card-footer>
+            <h3>Total £{{total}}</h3>
+        </mat-card-footer>
+
     </mat-card>
+</ng-template>
 
-    {{entryForm.valid}}
-</form>
+<ng-template  #selectionMenu >
+    <div class="flow-container">
+        <button  mat-button
+                 (click)="addProduct(itm)"
+                 class="flow-item"
+                 *ngFor="let itm of products">{{itm.description}}</button>
+    </div>
+</ng-template>

@@ -1,5 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar>
+
   <a mat-button
      [routerLink]="['listing']"
      matTooltip="Advanced Search"
@@ -7,16 +8,15 @@
   <a mat-button
      [routerLink]="['sales-entry']"
      color="accent">SALES</a>
-  <a mat-button color="warning"
-     [routerLink]="['product-entry']">PRODUCT</a>
+
   <button mat-button [matMenuTriggerFor]="mnuStanding">STANDING DATA</button>
 
   <mat-menu #mnuStanding="matMenu">
-    <button mat-menu-item [routerLink]="['product-entry']">Product</button>
+    <button mat-menu-item [routerLink]="['product-entry']">Product (new)</button>
     <button mat-menu-item [routerLink]="['product-listing']">Products</button>
 
   </mat-menu>
-
+  <h4 style="margin-left: auto; font-size: 10px">{{version}}</h4>
 
 </mat-toolbar>
 

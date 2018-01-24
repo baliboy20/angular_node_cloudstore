@@ -12,7 +12,7 @@ import {SalesRepoService} from '../data/sales-repo.service';
     styleUrls: ['./product-entry.component.scss']
 })
 export class ProductEntryComponent implements OnInit {
-    product: Product;
+    product: Product = ProductFactory.instOf();
 
     @Input() set selectedProduct(value: Product) {
         this.product = ProductFactory.clone(value);
@@ -21,6 +21,7 @@ export class ProductEntryComponent implements OnInit {
     @Output() formDoneEvent: EventEmitter<any> = new EventEmitter()
 
     separatorKeysCodes = [ENTER, COMMA];
+    addOnBlur = true;
 
     constructor(private snackbar: MatSnackBar, private  repo: SalesRepoService) {
         this.product = ProductFactory.instOf();
