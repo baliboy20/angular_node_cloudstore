@@ -37,6 +37,7 @@ import {ProductListingModule} from './product-listing/product-listing.module';
             {path: 'sales-entry', loadChildren: './sales-entry/sales-entry.module#SalesEntryModule'},
             {path: 'product-entry', loadChildren: './product-entry/product-entry.module#ProductEntryModule'},
             {path: 'product-listing', loadChildren: './product-entry/product-entry.module#ProductEntryModule'},
+            {path: 'side-nav', loadChildren: './sidenav/sidenav.module#SidenavModule'}
 
         ], { enableTracing: false}),
     ],

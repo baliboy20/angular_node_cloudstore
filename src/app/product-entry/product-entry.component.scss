@@ -1,9 +1,23 @@
 mat-card {
   width: 50%;
   margin: 0 auto;
+  mat-card {
+    height: 90%;
+  }
 }
 
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+ }
 .demo-chip-list, .textarea {
   width: 100%;
 }
+
+form {
+  height: calc(100vh - 64px);
+}
+
+
 

@@ -8,5 +8,6 @@ export const environment = {
         projectId: 'twosteptext',
         storageBucket: '<your-storage-bucket>',
         messagingSenderId: '<your-messaging-sender-id>'
-    }
+    },
+    hmr: false,
 };

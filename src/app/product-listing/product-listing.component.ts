@@ -25,14 +25,11 @@ export class ProductListingComponent implements OnInit, AfterViewInit {
         console.log('CLOSE FORM');
     }
 
-
     productData: Product[] = [];
 
     constructor(private repo: SalesRepoService,
                 private router: Router,
                 private  act: ActivatedRoute) {
-
-
     }
 
     products$: Observable<Product[]>;
@@ -51,14 +48,13 @@ export class ProductListingComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-
         this.repo.listProducts().subscribe((a: Product[]) => {
-            console.log('data', a);
+            console.log('get product data from listproducts ....');
+            this.productData = [];
             this.productData = this.productData.concat(...a);
             this.dataSource = new MatTableDataSource(this.productData);
             this.dataSource.sort = this.sort;
         });
-
     }
 
     applyFilter(filterValue: string) {
@@ -83,10 +79,10 @@ export class ProductListingComponent implements OnInit, AfterViewInit {
             this.router.navigate(['product-listing', outlet1]);
         }, 100);
         const outlet = {outlets: {productDetail: null}};
-
-
     }
-
+    removeProduct(id: string) {
+        this.repo.deleteProducts(id).then(console.log).catch(console.log);
+    }
 
     ngAfterViewInit(): void {
 

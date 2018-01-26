@@ -1,9 +1,9 @@
+<!--<div class="spacer"></div>-->
 
-
-<mat-drawer-container>
+<mat-drawer-container style="height: calc(100vh - 54px); background-color: antiquewhite">
 
   <mat-drawer mode="side" opened="true" mode="side" #sidenav>
-    <button mat-button-raised color="primary" (click)="sidenav.close()">CLOSE</button>
+    <!--<button mat-button-raised color="primary" (click)="sidenav.close()">CLOSE</button>-->
 
     <router-outlet name="productDetail"
                    (deactivate)="onDeactivate($event)"
@@ -13,7 +13,7 @@
 
     <mat-card-content>
 
-      <button mat-button-raised color="primary" (click)="sidenav.open()">open</button>
+      <!--<button mat-button-raised color="primary" (click)="sidenav.open()">open</button>-->
       <mat-form-field>
         <input type="text" matInput placeholder="filter products" (keyup)="applyFilter($event.target.value)">
       </mat-form-field>
@@ -27,7 +27,7 @@
         <ng-container matColumnDef="description">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Description</mat-header-cell>
           <mat-cell *matCellDef="let productSource">
-            <button matButton (click)="navigateToDetail(productSource)">{{productSource.description}}</button>
+            <button mat-button (click)="navigateToDetail(productSource)">{{productSource.description}}</button>
           </mat-cell>
         </ng-container>
 
@@ -35,6 +35,22 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header> Price</mat-header-cell>
           <mat-cell *matCellDef="let productSource">
             <a [routerLink]="['listing']">{{productSource.price}} </a>
+            <button mat-icon-button
+                    matTootip="delete item"
+                    (click)="removeProduct(productSource.id)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+
+        <ng-container >
+          <mat-header-cell *matHeaderCellDef mat-sort-header> id</mat-header-cell>
+          <mat-cell *matCellDef="let productSource">
+            <!--<a [routerLink]="['listing']">{{productSource.id}} </a>-->
+            <button mat-icon-button (click)="removeProduct(productSource.id)">
+              <mat-icon>close</mat-icon>
+            </button>
           </mat-cell>
         </ng-container>
 

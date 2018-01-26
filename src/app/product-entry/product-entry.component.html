@@ -2,7 +2,9 @@
     <br>
     <mat-card>
         <mat-card-title>Products</mat-card-title>
+
         <mat-card-content>
+
             <mat-form-field>
                 <input type="text"
                        matInput
@@ -24,7 +26,7 @@
             </mat-form-field>
 
             <mat-form-field>
-                <input type="number"
+                <input type="text"
                        matInput
                        [(ngModel)]="product.group"
                        placeholder="Product group"
@@ -32,6 +34,14 @@
                        name="#group">
                 <mat-hint>quantity</mat-hint>
             </mat-form-field>
+            <br><br>
+            <div>
+                <input type="color"
+                       [(ngModel)]="product.color"
+                       placeholder="Product color"
+                       name="#color">
+                <mat-hint>quantity</mat-hint>
+            </div>
             <br><br>
             <mat-form-field class="demo-chip-list">
                 <mat-chip-list #catList>

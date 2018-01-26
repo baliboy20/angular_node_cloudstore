@@ -1,23 +1,75 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<div class="spacer">ddd</div>
 <mat-toolbar>
+    <button mat-icon-button
+            matTooltip="Home menu"
+            (click)="sideNav.open()">
+        <mat-icon>home</mat-icon>
+    </button>
 
-  <a mat-button
-     [routerLink]="['listing']"
-     matTooltip="Advanced Search"
-     color="primary">SEARCH</a>
-  <a mat-button
-     [routerLink]="['sales-entry']"
-     color="accent">SALES</a>
 
-  <button mat-button [matMenuTriggerFor]="mnuStanding">STANDING DATA</button>
 
-  <mat-menu #mnuStanding="matMenu">
-    <button mat-menu-item [routerLink]="['product-entry']">Product (new)</button>
-    <button mat-menu-item [routerLink]="['product-listing']">Products</button>
+    <button mat-icon-button
+            style="margin-left: auto"
+            [matMenuTriggerFor]="mnuStanding"
+            matTooltip="login">
+        <mat-icon>person</mat-icon>
+    </button>
 
-  </mat-menu>
-  <h4 style="margin-left: auto; font-size: 10px">{{version}}</h4>
+    <mat-menu #mnuStanding="matMenu">
+        <button mat-menu-item [routerLink]="['product-entry']">Login (new)</button>
+        <button mat-menu-item [routerLink]="['product-listing']">Logout</button>
+
+    </mat-menu>
+    <h4 style="margin-left: auto; font-size: 10px">{{version}}</h4>
 
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<mat-sidenav-container mode="over">
+    <mat-sidenav #sideNav opened="false">
+        <mat-list>
+            <mat-list-item>
+                <button mat-button
+                        [routerLink]="['listing']"
+                        matTooltip="Advanced Search"
+                        (click)="sideNav.close()"
+                        color="primary">SEARCH
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button
+                        [routerLink]="['sales-entry']"
+                        (click)="sideNav.close()"
+                        color="accent">SALES
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button
+                   [routerLink]="['side-nav']"
+                   (click)="sideNav.close()"
+                   color="primary">SIDE NAV
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-menu-item
+                        [routerLink]="['product-entry']"
+                        (click)="sideNav.close()"
+                        color="accent"> Product (new)
+                </button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-menu-item
+                        [routerLink]="['product-listing']"
+                        (click)="sideNav.close()"
+                        color="accent">Products
+                </button>
+            </mat-list-item>
+
+        </mat-list>
+
+
+    </mat-sidenav>
+
+    <router-outlet></router-outlet>
+
+</mat-sidenav-container>

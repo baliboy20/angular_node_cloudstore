@@ -9,7 +9,7 @@ import {Product} from '../../data/model/product';
 })
 export class ProductListingDetailComponent implements OnInit {
 
-    productData: Product = {description: 'willy'};
+    productData: Product;
     @Output() closeEvent: EventEmitter<any> = new EventEmitter()
 
 

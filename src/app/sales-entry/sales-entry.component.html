@@ -1,17 +1,19 @@
-<mat-toolbar></mat-toolbar>
-<mat-drawer-container style="height: 100vh; width: 100%">
-    <mat-drawer #sidenav opened="true"
-                style="width: 40%"
+<div class="spacer"></div>
+<div class="col-2-container">
+    <div class="left-pane"
+                style="max-width: 40%;"
                 mode="side">
-        <!--<button mat-button (click)="sidenav.close()" >CLOSE</button>-->
-    <!--<button mat-button (click)="sidenav.open()">OPEN</button>-->
 
         <ng-container *ngTemplateOutlet="selectedItems"></ng-container>
 
-    </mat-drawer>
+    </div>
+    <div class="right-pane">
+        <ng-container *ngTemplateOutlet="selectionMenu"></ng-container>
 
-    <ng-container *ngTemplateOutlet="selectionMenu"></ng-container>
-</mat-drawer-container>
+    </div>
+
+
+</div>
 
 <!-- TEMPLATES -->
 
@@ -29,14 +31,34 @@
                 <td>{{order.price}}</td>
                 <td>{{order.quantity}}</td>
                 <td><button mat-icon-button (click)="removeTransaction(order)">
-                    <mat-icon style="font-size: 18px; color: gainsboro">close</mat-icon>
+                    <mat-icon style="font-size: 20px; color: darkgray">exposure_neg_1</mat-icon>
+                </button></td>
+                <td><button mat-icon-button (click)="addTransaction(order)">
+                    <mat-icon style="font-size: 20px; color: darkgray">exposure_plus_1</mat-icon>
                 </button></td>
             </tr>
             </tbody>
         </table>
         <mat-card-footer>
+            <mat-divider></mat-divider>
             <h3>Total £{{total}}</h3>
         </mat-card-footer>
+        <mat-card-actions>
+            <button mat-icon-button
+                    matTooltip="Complete"
+                    class="icon-confirm"
+                    (click)=" doPersistOrder()"
+                    color="primary">
+                <i class="material-icons" style="font-size: 36px">check</i>
+            </button>
+            <button mat-icon-button
+                    class="icon-cancel"
+                    matTooltip="Clear"
+                    (click)=" doCancelOrder()"
+                    color="primary">
+                <i class="material-icons" style="font-size: 36px">clear</i>
+            </button>
+        </mat-card-actions>
 
     </mat-card>
 </ng-template>
@@ -46,6 +68,8 @@
         <button  mat-button
                  (click)="addProduct(itm)"
                  class="flow-item"
-                 *ngFor="let itm of products">{{itm.description}}</button>
+                 [style.backgroundColor]="itm.color"
+                 *ngFor="let itm of products">{{itm.description}}
+        </button>
     </div>
 </ng-template>
